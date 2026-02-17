@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Contacto - Wiki Javeriana</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Header Fragment -->
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h2 th:text="${pageTitle}">Contacto</h2>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">Inicio</a> > Contacto
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📬 Contáctanos</h3>
+                <p>
+                    Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o sugerencia, 
+                    no dudes en ponerte en contacto con nosotros.
+                </p>
+            </div>
+
+            <!-- Success Notification -->
+            <div th:if="${formSubmitted}" class="success-notification">
+                📧 Formulario enviado exitosamente!
+            </div>
+
+            <div class="contact-form" th:unless="${formSubmitted}">
+                <h3>📝 Formulario de Contacto</h3>
+                <form th:action="@{/contact}" method="post">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Tu número de teléfono">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" name="subject" required placeholder="Asunto del mensaje">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" required placeholder="Escribe tu mensaje aquí..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Enviar Mensaje</button>
+                </form>
+            </div>
+
+            <div class="content-section">
+                <h3>📞 Información de Contacto</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div>
+                        <h4>🏛️ Dirección</h4>
+                        <p>
+                            Universidad Javeriana<br>
+                            Calle 70 # 53-20<br>
+                            Bogotá, Colombia
+                        </p>
+                    </div>
+                    <div>
+                        <h4>📧 Email</h4>
+                        <p>
+                            info@javeriana.edu.co<br>
+                            soporte@wiki.javeriana.edu.co
+                        </p>
+                    </div>
+                    <div>
+                        <h4>📞 Teléfono</h4>
+                        <p>
+                            Oficina: +57 1 232 0000<br>
+                            Soporte: +57 1 232 0101
+                        </p>
+                    </div>
+                    <div>
+                        <h4>⏰ Horario</h4>
+                        <p>
+                            Lunes - Viernes: 8:00 AM - 5:00 PM<br>
+                            Sábados: 9:00 AM - 1:00 PM<br>
+                            Domingos: Cerrado
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>

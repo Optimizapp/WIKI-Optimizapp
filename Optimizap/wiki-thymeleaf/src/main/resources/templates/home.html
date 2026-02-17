@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Wiki Javeriana</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Header Fragment -->
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <h2 th:text="${welcomeMessage}">Bienvenido a la Wiki Javeriana</h2>
+                <p th:text="${description}">
+                    Recurso educativo colaborativo para estudiantes, profesores y la comunidad universitaria.
+                </p>
+            </section>
+
+            <!-- Features Section -->
+            <section>
+                <div class="page-header">
+                    <h2>✨ Características</h2>
+                </div>
+                <div class="features">
+                    <div class="feature-card" th:each="feature : ${features}">
+                        <p th:text="${feature}">📚 Contenido académico organizado</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Latest Topics -->
+            <section class="content-section">
+                <h3>📖 Temas Destacados</h3>
+                <p>
+                    Explora nuestra colección de temas académicos cuidadosamente seleccionados para tu aprendizaje.
+                </p>
+                <div class="topic-cards">
+                    <div class="topic-card">
+                        <h3>Programación</h3>
+                        <p>Fundamentos de programación y algoritmos</p>
+                        <a th:href="@{/topic/introduccion-programacion}" class="btn">Ver más</a>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Bases de Datos</h3>
+                        <p>Modelado y gestión de bases de datos</p>
+                        <a th:href="@{/topic/bases-datos}" class="btn">Ver más</a>
+                    </div>
+                    <div class="topic-card">
+                        <h3>Ingeniería de Software</h3>
+                        <p>Principios y prácticas de desarrollo de software</p>
+                        <a th:href="@{/topic/ingenieria-software}" class="btn">Ver más</a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>

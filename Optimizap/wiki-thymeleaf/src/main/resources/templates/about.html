@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Acerca de - Wiki Javeriana</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Header Fragment -->
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h2 th:text="${pageTitle}">Acerca de la Wiki Javeriana</h2>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">Inicio</a> > Acerca de
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>🎯 Nuestra Misión</h3>
+                <p>
+                    La Wiki Javeriana es una plataforma educativa colaborativa diseñada para facilitar el acceso 
+                    a recursos académicos de calidad para la comunidad universitaria. Nuestro objetivo es 
+                    promover el aprendizaje colaborativo y la difusión del conocimiento.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>📚 ¿Qué es una Wiki?</h3>
+                <p>
+                    Una wiki es una página web que permite la creación y edición colaborativa de contenido 
+                    mediante un navegador web. La Wiki Javeriana es una herramienta educativa que facilita 
+                    la colaboración entre estudiantes, profesores y profesionales.
+                </p>
+                <p>
+                    En esta plataforma, la comunidad universitaria puede:
+                </p>
+                <ul>
+                    <li>Crear y editar contenido académico</li>
+                    <li>Compartir recursos educativos</li>
+                    <li>Colaborar en proyectos de investigación</li>
+                    <li>Acceder a material de apoyo para cursos</li>
+                    <li>Participar en discusiones académicas</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>🔧 Tecnología</h3>
+                <p>
+                    La Wiki Javeriana está construida con tecnologías modernas:
+                </p>
+                <ul>
+                    <li><strong>Spring Boot</strong> - Framework Java para desarrollo web</li>
+                    <li><strong>Thymeleaf</strong> - Motor de plantillas para la vista</li>
+                    <li><strong>CSS3</strong> - Estilos responsive y modernos</li>
+                    <li><strong>Bootstrap</strong> - Framework para diseño responsive</li>
+                    <li><strong>PostgreSQL</strong> - Base de datos relacional</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>👥 Equipo</h3>
+                <p>
+                    La Wiki Javeriana es desarrollada y mantenida por el Grupo de Desarrollo Web de la 
+                    Universidad Javeriana, compuesto por estudiantes y profesores de la Facultad de Ingeniería.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>

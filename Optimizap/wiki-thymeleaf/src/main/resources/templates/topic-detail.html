@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Tema - Wiki Javeriana</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Header Fragment -->
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h2 th:text="${pageTitle}">Introducción a la Programación</h2>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">Inicio</a> > 
+                    <a th:href="@{/topics}">Temas</a> > 
+                    Programación
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📖 ¿Qué es la Programación?</h3>
+                <p>
+                    La programación es el proceso de crear un conjunto de instrucciones que le dicen a un 
+                    computador cómo realizar una tarea. Estas instrucciones se escriben en un lenguaje de 
+                    programación, que es una forma estructurada de comunicarse con los computadores.
+                </p>
+                <p>
+                    La programación es fundamental para el desarrollo de software, aplicaciones móviles, 
+                    sitios web, juegos y sistemas informáticos que usamos en nuestra vida diaria.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>🧩 Elementos Básicos</h3>
+                <ul>
+                    <li><strong>Lenguajes de Programación:</strong> Conjunto de reglas para escribir instrucciones (ej: Python, Java, JavaScript)</li>
+                    <li><strong>Sintaxis:</strong> Estructura y gramática del lenguaje</li>
+                    <li><strong>Variables:</strong> Espacios de memoria para almacenar datos</li>
+                    <li><strong>Operadores:</strong> Simbolos para realizar operaciones matemáticas y lógicas</li>
+                    <li><strong>Estructuras de Control:</strong> Condicionales (if/else), bucles (for/while)</li>
+                    <li><strong>Funciones:</strong> Bloques de código reutilizables</li>
+                    <li><strong>Arreglos y Estructuras de Datos:</strong> Para organizar y manipular datos</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>💻 Primer Programa</h3>
+                <p>
+                    Un ejemplo de programa simple en Python que imprime "Hola, Mundo!":
+                </p>
+                <pre><code style="background-color: #f8f9fa; padding: 1rem; border-radius: 5px; display: block; overflow-x: auto;">
+print("Hola, Mundo!")
+                </code></pre>
+                <p>
+                    Este programa muestra el texto "Hola, Mundo!" en la consola del computador.
+                </p>
+            </div>
+
+            <div class="content-section">
+                <h3>📚 Recursos de Aprendizaje</h3>
+                <ul>
+                    <li><a href="https://www.w3schools.com/python/" target="_blank">W3Schools Python</a> - Tutorial interactivo</li>
+                    <li><a href="https://docs.python.org/3/" target="_blank">Documentación Oficial Python</a> - Referencia completa</li>
+                    <li><a href="https://www.codecademy.com/learn/learn-python-3" target="_blank">Codecademy Python Course</a> - Aprendizaje práctico</li>
+                    <li><a href="https://www.youtube.com/results?search_query=python+tutorial" target="_blank">YouTube Tutoriales</a> - Videos explicativos</li>
+                </ul>
+            </div>
+
+            <div class="content-section">
+                <h3>🔄 Próximos Pasos</h3>
+                <p>
+                    Si quieres seguir aprendiendo programación, te recomiendo:
+                </p>
+                <ul>
+                    <li>Práctica con ejercicios básicos</li>
+                    <li>Crear proyectos pequeños (calculadora, lista de tareas)</li>
+                    <li>Explorar diferentes lenguajes de programación</li>
+                    <li>Participar en comunidades de programadores</li>
+                    <li>Resolver problemas de algoritmos en plataformas como LeetCode o HackerRank</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>
