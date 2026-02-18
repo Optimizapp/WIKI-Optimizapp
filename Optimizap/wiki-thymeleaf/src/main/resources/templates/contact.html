@@ -7,98 +7,96 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
-    <!-- Header Fragment -->
-    <th:block th:replace="fragments/header :: header"></th:block>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <div class="page-header">
-                <h2 th:text="${pageTitle}">Contacto</h2>
-                <div class="breadcrumb">
-                    <a th:href="@{/}">Inicio</a> > Contacto
-                </div>
-            </div>
+<th:block th:replace="fragments/header :: header"></th:block>
 
-            <div class="content-section">
-                <h3>📬 Contáctanos</h3>
-                <p>
-                    Estamos aquí para ayudarte. Si tienes alguna pregunta, comentario o sugerencia, 
-                    no dudes en ponerte en contacto con nosotros.
-                </p>
-            </div>
+<main class="main-content">
+    <div class="container">
 
-            <!-- Success Notification -->
-            <div th:if="${formSubmitted}" class="success-notification">
-                📧 Formulario enviado exitosamente!
-            </div>
-
-            <div class="contact-form" th:unless="${formSubmitted}">
-                <h3>📝 Formulario de Contacto</h3>
-                <form th:action="@{/contact}" method="post">
-                    <div class="form-group">
-                        <label for="name">Nombre completo</label>
-                        <input type="text" id="name" name="name" required placeholder="Tu nombre completo">
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Correo electrónico</label>
-                        <input type="email" id="email" name="email" required placeholder="tu@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Teléfono</label>
-                        <input type="tel" id="phone" name="phone" required placeholder="Tu número de teléfono">
-                    </div>
-                    <div class="form-group">
-                        <label for="subject">Asunto</label>
-                        <input type="text" id="subject" name="subject" required placeholder="Asunto del mensaje">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Mensaje</label>
-                        <textarea id="message" name="message" required placeholder="Escribe tu mensaje aquí..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary">Enviar Mensaje</button>
-                </form>
-            </div>
-
-            <div class="content-section">
-                <h3>📞 Información de Contacto</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-                    <div>
-                        <h4>🏛️ Dirección</h4>
-                        <p>
-                            Universidad Javeriana<br>
-                            Calle 70 # 53-20<br>
-                            Bogotá, Colombia
-                        </p>
-                    </div>
-                    <div>
-                        <h4>📧 Email</h4>
-                        <p>
-                            info@javeriana.edu.co<br>
-                            soporte@wiki.javeriana.edu.co
-                        </p>
-                    </div>
-                    <div>
-                        <h4>📞 Teléfono</h4>
-                        <p>
-                            Oficina: +57 1 232 0000<br>
-                            Soporte: +57 1 232 0101
-                        </p>
-                    </div>
-                    <div>
-                        <h4>⏰ Horario</h4>
-                        <p>
-                            Lunes - Viernes: 8:00 AM - 5:00 PM<br>
-                            Sábados: 9:00 AM - 1:00 PM<br>
-                            Domingos: Cerrado
-                        </p>
-                    </div>
-                </div>
+        <div class="page-header">
+            <h2 th:text="${pageTitle}">Contacto</h2>
+            <div class="breadcrumb">
+                <a th:href="@{/}">Inicio</a> &gt; <span>Contacto</span>
             </div>
         </div>
-    </main>
 
-    <!-- Footer Fragment -->
-    <th:block th:replace="fragments/footer :: footer"></th:block>
+        <!-- Mensaje de éxito cuando POST /contact ya se procesó -->
+        <div class="success-notification" th:if="${formSubmitted}">
+        Formulario válido. Información lista para envío.
+        </div>
+
+        <!-- Feedback visual en vivo cuando TODO es válido (se muestra por JS) -->
+        <div id="formReady" class="success-notification" style="display:none;">
+        Todo correcto. Puedes enviar el formulario.
+        </div>
+
+        <section class="content-section">
+            <h3>📬 Contáctanos</h3>
+            <p>
+                Estamos aquí para ayudarte. Completa el formulario y valida los campos antes de enviarlo.
+            </p>
+
+            <form id="contactForm" class="contact-form"
+                th:action="@{/contact}" method="post" novalidate>
+
+                <!-- Nombre -->
+                <div class="form-group">
+                    <label for="fullName">Nombre completo <span class="req">*</span></label>
+                    <input id="fullName" name="name" type="text" placeholder="Tu nombre completo">
+                    <small class="hint">Mínimo 3 caracteres. No solo espacios.</small>
+                    <small class="error"></small>
+                </div>
+
+                <!-- Correo -->
+                <div class="form-group">
+                    <label for="email">Correo electrónico <span class="req">*</span></label>
+                    <input id="email" name="email" type="email" placeholder="tu@email.com">
+                    <small class="hint">Debe incluir @ y un punto (.) después de la @.</small>
+                    <small class="error"></small>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="form-group">
+                    <label for="phone">Teléfono <span class="req">*</span></label>
+                    <input id="phone" name="phone" type="text" placeholder="Tu número de teléfono">
+                    <small class="hint">Solo números. Entre 7 y 15 dígitos.</small>
+                    <small class="error"></small>
+                </div>
+
+                <!-- Asunto -->
+                <div class="form-group">
+                    <label for="subject">Asunto o motivo <span class="req">*</span></label>
+                    <select id="subject" name="subject">
+                        <option value="">Seleccione una opción</option>
+                        <option value="Sugerencia">Sugerencia</option>
+                        <option value="Pregunta">Pregunta</option>
+                        <option value="Reporte de error">Reporte de error</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                    <small class="hint">No se permite dejar la opción por defecto.</small>
+                    <small class="error"></small>
+                </div>
+
+                <!-- Mensaje -->
+                <div class="form-group">
+                    <label for="message">Mensaje <span class="req">*</span></label>
+                    <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..."></textarea>
+
+                    <!-- contador (faltan / quedan / te pasaste) -->
+                    <small id="messageHint" class="hint"></small>
+                    <small class="error"></small>
+                </div>
+
+                <button type="submit" class="btn-primary">Enviar mensaje</button>
+            </form>
+        </section>
+
+    </div>
+</main>
+
+<th:block th:replace="fragments/footer :: footer"></th:block>
+
+<!-- IMPORTANTE: defer para asegurar que cargue después del DOM -->
+<script th:src="@{/js/contact-validation.js}" defer></script>
 </body>
 </html>
