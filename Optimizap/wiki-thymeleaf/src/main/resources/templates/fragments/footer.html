@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Footer</title>
+</head>
+<body>
+    <footer th:fragment="footer" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wiki Javeriana</h3>
+                    <p>Recurso educativo para la comunidad universitaria</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces rápidos</h4>
+                    <ul>
+                        <li><a th:href="@{/}">Inicio</a></li>
+                        <li><a th:href="@{/about}">Acerca de</a></li>
+                        <li><a th:href="@{/topics}">Temas</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>📧 info@javeriana.edu.co</p>
+                    <p>📞 +57 1 232 0000</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Universidad Javeriana. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

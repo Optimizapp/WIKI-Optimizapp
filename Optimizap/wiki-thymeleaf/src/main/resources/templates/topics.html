@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Temas - Wiki Javeriana</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Header Fragment -->
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h2 th:text="${pageTitle}">Temas de la Wiki</h2>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">Inicio</a> > Temas
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📚 Todos los Temas</h3>
+                <p>
+                    Explora nuestra colección completa de temas académicos organizados por categorías.
+                </p>
+            </div>
+
+            <div class="topic-cards">
+                <div class="topic-card" th:each="topic : ${topics}">
+                    <h3 th:text="${topic.name}">Tema</h3>
+                    <p th:text="${topic.description}">Descripción del tema</p>
+                    <a th:href="@{/topic/{slug}(slug=${topic.slug})}" class="btn">Ver más</a>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>🔍 ¿No Encontraste lo que Buscabas?</h3>
+                <p>
+                    Si no encuentras el tema que buscas, puedes solicitar la creación de contenido nuevo.
+                    Nuestra comunidad está constantemente trabajando para expandir la wiki.
+                </p>
+                <p>
+                    <strong>Sugerencias:</strong> Utiliza la barra de búsqueda o consulta a los moderadores
+                    para obtener ayuda.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Fragment -->
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>

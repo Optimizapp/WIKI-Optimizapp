@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Acerca de - Wiki Javeriana</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+    <th:block th:replace="~{fragments/header :: header}"></th:block>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h2 th:text="${pageTitle}">Acerca de la Wiki Javeriana</h2>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">Inicio</a> &gt; <span>Acerca de</span>
+                </div>
+            </div>
+
+            <!-- Propósito -->
+            <div class="content-section">
+                <h3>Propósito</h3>
+                <p th:text="${purpose}">
+                    Esta wiki organiza y presenta información de forma estructurada para simular un portal de documentación técnica.
+                </p>
+            </div>
+
+            <!-- Alcance -->
+            <div class="content-section">
+                <h3>Alcance del taller</h3>
+                <p>
+                    Esta aplicación está orientada a demostrar buenas prácticas de arquitectura web server-side,
+                    uso de vistas dinámicas y reutilización de componentes de interfaz con Thymeleaf.
+                </p>
+                <ul>
+                    <li>Renderizado dinámico de contenido con Thymeleaf</li>
+                    <li>Navegación coherente entre secciones</li>
+                    <li>Uso de fragmentos reutilizables (header, footer, menú)</li>
+                    <li>Formulario de contacto con validaciones en JavaScript</li>
+                    <li>Despliegue en contenedor Docker con instrucciones de ejecución</li>
+                </ul>
+            </div>
+
+            <!-- Arquitectura -->
+            <div class="content-section">
+                <h3>Arquitectura</h3>
+                <p>
+                    La wiki sigue una arquitectura MVC:
+                </p>
+                <ul>
+                    <li th:each="item : ${architecture}" th:text="${item}">
+                        Elemento de arquitectura
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Tecnologías -->
+            <div class="content-section">
+                <h3>Tecnologías</h3>
+                <p>
+                    Tecnologías utilizadas en el desarrollo:
+                </p>
+                <ul>
+                    <li th:each="t : ${techStack}">
+                        <strong th:text="${t.name}">Tecnología</strong>
+                        <span> - </span>
+                        <span th:text="${t.description}">Descripción</span>
+                    </li>
+                </ul>
+                <p class="note" th:if="${techNote != null}" th:text="${techNote}"></p>
+            </div>
+
+            <!-- Equipo -->
+            <div class="content-section">
+                <h3>Equipo</h3>
+                <p>
+                    Este proyecto es desarrollado por estudiantes del curso. Integrantes:
+                </p>
+                <ul>
+                    <li th:each="m : ${members}" th:text="${m}">Integrante</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <th:block th:replace="~{fragments/footer :: footer}"></th:block>
+
+</body>
+</html>

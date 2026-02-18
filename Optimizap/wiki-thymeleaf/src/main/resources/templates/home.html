@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Wiki Javeriana</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<th:block th:replace="fragments/header :: header"></th:block>
+
+<main class="main-content">
+    <div class="container">
+
+        <!-- Hero -->
+        <section class="hero">
+            <h2 th:text="${welcomeMessage}">Bienvenido a la Wiki de la Universidad Javeriana</h2>
+            <p th:text="${description}">Descripción general...</p>
+        </section>
+
+        <!-- Detalles técnicos -->
+        <section class="content-section">
+            <div class="page-header">
+                <h2> Detalles técnicos del proyecto</h2>
+            </div>
+
+            <!--  Integrantes arriba -->
+            <h3> Integrantes</h3>
+            <div class="features">
+                <div class="feature-card" th:each="feature : ${features}">
+                    <p th:text="${feature}">Nombre — GitHub</p>
+                </div>
+            </div>
+
+            <!-- Objetivo técnico -->
+            <h3> Objetivo técnico</h3>
+            <p th:text="${projectGoal}">Objetivo técnico...</p>
+
+            <!-- Bloques técnicos -->
+            <div class="topic-cards">
+                <div class="topic-card">
+                    <h3>Arquitectura</h3>
+                    <ul>
+                        <li th:each="item : ${architecture}" th:text="${item}">Item</li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Tecnologías</h3>
+                    <ul>
+                        <li th:each="t : ${techStack}">
+                            <strong th:text="${t.name}">Tech</strong>:
+                            <span th:text="${t.description}">Descripción</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="topic-card">
+                    <h3>Despliegue</h3>
+                    <ul>
+                        <li th:each="d : ${deploymentNotes}" th:text="${d}">Nota</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h3>Navegación rápida</h3>
+            <p>Accede a las secciones principales de la wiki.</p>
+
+            <div class="topic-cards">
+                <div class="topic-card">
+                    <h3>Acerca de</h3>
+                    <p>Propósito, misión y alcance de la Wiki.</p>
+                    <a th:href="@{/about}" class="btn">Ir</a>
+                </div>
+                <div class="topic-card">
+                    <h3>Temas</h3>
+                    <p>Listado de temas organizados por categorías.</p>
+                    <a th:href="@{/topics}" class="btn">Ir</a>
+                </div>
+                <div class="topic-card">
+                    <h3>Contacto</h3>
+                    <p>Formulario con validaciones en JavaScript.</p>
+                    <a th:href="@{/contact}" class="btn">Ir</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<th:block th:replace="fragments/footer :: footer"></th:block>
+
+</body>
+</html>
