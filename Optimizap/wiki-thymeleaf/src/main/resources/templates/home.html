@@ -26,10 +26,15 @@
             </div>
 
             <!--  Integrantes arriba -->
-            <h3> Integrantes</h3>
-            <div class="features">
-                <div class="feature-card" th:each="feature : ${features}">
-                    <p th:text="${feature}">Nombre — GitHub</p>
+            <h3>Integrantes</h3>
+            <div class="members-grid">
+                <div class="member-card" th:each="member, stat : ${features}">
+                    <div class="member-image-container">
+                        <img th:src="@{/images/{image}(image=${member.image})}" th:alt="${member.name}" class="member-image">
+                    </div>
+                    <h4 th:text="${member.name}">Nombre</h4>
+                    <p class="github-link">GitHub: <a th:href="'https://github.com/' + ${member.github}" th:text="${member.github}" target="_blank" rel="noopener noreferrer"></a></p>
+                    <a th:href="@{/member/{index}(index=${stat.index})}" class="member-link">Ver más información</a>
                 </div>
             </div>
 
