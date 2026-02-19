@@ -13,13 +13,34 @@ import java.util.List;
 @Controller
 public class WikiController {
 
+    // Clase para representar a un integrante del equipo
+    public static class Member {
+        private final String name;
+        private final String github;
+        private final String image;
+        private final String description;
+
+        public Member(String name, String github, String image, String description) {
+            this.name = name;
+            this.github = github;
+            this.image = image;
+            this.description = description;
+        }
+
+        public String getName() { return name; }
+        public String getGithub() { return github; }
+        public String getImage() { return image; }
+        public String getDescription() { return description; }
+    }
+
     // Datos compartidos (para reutilizar en varias páginas)
-    private static final List<String> MEMBERS = Arrays.asList(
-            "Maria Camila Beltrán — GitHub: Mcbeltranc",
-            "Andrés Felipe Pinzón Márquez — GitHub: amarquez10",
-            "Mauricio Raba — GitHub: Andresm-Rabab",
-            "Nicolás Mateo Morales Sánchez — GitHub: Nicolasmateo2",
-            "Diego Fernando Zabala — GitHub: DiegoFernzab"
+    private static final List<Member> MEMBERS = Arrays.asList(
+            new Member("Maria Camila Beltrán", "Mcbeltranc", "camila.jpg", "Le gusta viajar, manejar bases de datos y dirigir proyectos."),
+            new Member("Andrés Felipe Pinzón Márquez", "amarquez10", "andres.jpg", "Le gusta jugar videojuegos, programar páginas web y desarrollar aplicaciones móviles."),
+            new Member("Mauricio Raba", "Andresm-Rabab", "mauricio.jpg", "Le gusta jugar videojuegos, programar páginas web y desarrollar aplicaciones móviles."),
+            new Member("Nicolás Mateo Morales Sánchez", "Nicolasmateo2", "nicolas.jpg", "Le gusta jugar videojuegos, programar páginas web y desarrollar aplicaciones móviles."),
+            new Member("Diego Fernando Zabala", "DiegoFernzab", "diego.jpg", "Le gusta jugar videojuegos, programar páginas web y desarrollar aplicaciones móviles."),
+            new Member("Daniel Galvis", "daga", "daga.jpg", "Le gusta jugar videojuegos, programar páginas web y desarrollar aplicaciones móviles.")
     );
 
     private static final List<String> ARCHITECTURE = Arrays.asList(
@@ -106,6 +127,17 @@ public class WikiController {
         model.addAttribute("topics", TOPICS);
 
         return "topics";
+    }
+
+    @GetMapping("/member/{index}")
+    public String memberDetail(@PathVariable int index, Model model) {
+        if (index < 0 || index >= MEMBERS.size()) {
+            return "redirect:/";
+        }
+        Member member = MEMBERS.get(index);
+        model.addAttribute("title", "Acerca de " + member.getName());
+        model.addAttribute("member", member);
+        return "member-detail";
     }
 
     @GetMapping("/contact")

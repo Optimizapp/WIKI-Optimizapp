@@ -78,9 +78,15 @@
                 <p>
                     Este proyecto es desarrollado por estudiantes del curso. Integrantes:
                 </p>
-                <ul>
-                    <li th:each="m : ${members}" th:text="${m}">Integrante</li>
-                </ul>
+                <div class="members-grid">
+                    <div class="member-card" th:each="m : ${members}">
+                        <img th:src="@{/images/{img}(img=${m.image})}" th:alt="${m.name}" class="member-image">
+                        <div class="member-info">
+                            <p class="member-name" th:text="${m.name}">Nombre</p>
+                            <p class="member-github">GitHub: <a th:href="'https://github.com/' + ${m.github}" th:text="${m.github}" target="_blank" rel="noopener noreferrer"></a></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
