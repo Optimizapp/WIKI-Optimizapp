@@ -21,13 +21,14 @@
         </div>
 
         <!-- Mensaje de éxito cuando POST /contact ya se procesó -->
-        <div class="success-notification" th:if="${formSubmitted}">
-        Formulario válido. Información lista para envío.
+        <div class="success-notification" th:if="${successMessage}" th:text="${successMessage}">
+            ¡Mensaje guardado en base de datos correctamente!
         </div>
 
         <!-- Feedback visual en vivo cuando TODO es válido (se muestra por JS) -->
+
         <div id="formReady" class="success-notification" style="display:none;">
-        Todo correcto. Puedes enviar el formulario.
+            Todo correcto. Puedes enviar el formulario.
         </div>
 
         <section class="content-section">
@@ -37,36 +38,36 @@
             </p>
 
             <form id="contactForm" class="contact-form"
-                th:action="@{/contact}" method="post" novalidate>
+                th:action="@{/contact}" th:object="${contactMessage}" method="post" novalidate>
 
                 <!-- Nombre -->
                 <div class="form-group">
                     <label for="fullName">Nombre completo <span class="req">*</span></label>
-                    <input id="fullName" name="name" type="text" placeholder="Tu nombre completo">
+                    <input type="text" th:field="*{name}" id="fullName" placeholder="Tu nombre completo">
                     <small class="hint">Mínimo 3 caracteres. No solo espacios.</small>
-                    <small class="error"></small>
+                    <small class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
                 </div>
 
                 <!-- Correo -->
                 <div class="form-group">
                     <label for="email">Correo electrónico <span class="req">*</span></label>
-                    <input id="email" name="email" type="email" placeholder="tu@email.com">
+                    <input type="email" th:field="*{email}" id="email" placeholder="tu@email.com">
                     <small class="hint">Debe incluir @ y un punto (.) después de la @.</small>
-                    <small class="error"></small>
+                    <small class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
                 </div>
 
                 <!-- Teléfono -->
                 <div class="form-group">
                     <label for="phone">Teléfono <span class="req">*</span></label>
-                    <input id="phone" name="phone" type="text" placeholder="Tu número de teléfono">
+                    <input type="text" th:field="*{phone}" id="phone" placeholder="Tu número de teléfono">
                     <small class="hint">Solo números. Entre 7 y 15 dígitos.</small>
-                    <small class="error"></small>
+                    <small class="error" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></small>
                 </div>
 
                 <!-- Asunto -->
                 <div class="form-group">
                     <label for="subject">Asunto o motivo <span class="req">*</span></label>
-                    <select id="subject" name="subject">
+                    <select th:field="*{subject}" id="subject">
                         <option value="">Seleccione una opción</option>
                         <option value="Sugerencia">Sugerencia</option>
                         <option value="Pregunta">Pregunta</option>
@@ -74,17 +75,17 @@
                         <option value="Otro">Otro</option>
                     </select>
                     <small class="hint">No se permite dejar la opción por defecto.</small>
-                    <small class="error"></small>
+                    <small class="error" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></small>
                 </div>
 
                 <!-- Mensaje -->
                 <div class="form-group">
                     <label for="message">Mensaje <span class="req">*</span></label>
-                    <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..."></textarea>
-
+                    <textarea th:field="*{message}" id="message" placeholder="Escribe tu mensaje aquí..."></textarea>
+                    
                     <!-- contador (faltan / quedan / te pasaste) -->
                     <small id="messageHint" class="hint"></small>
-                    <small class="error"></small>
+                    <small class="error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></small>
                 </div>
 
                 <button type="submit" class="btn-primary">Enviar mensaje</button>

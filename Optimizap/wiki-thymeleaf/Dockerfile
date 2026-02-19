@@ -23,10 +23,10 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 
 # Copy the built war file from the build stage
-COPY --from=build /app/target/thymeleaf-0.0.1-SNAPSHOT.war app.war
+COPY --from=build /app/target/*.jar app.jar
 
 # Expose port 8080
 EXPOSE 8080
 
 # Run the application
-ENTRYPOINT ["java", "-jar", "app.war"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
