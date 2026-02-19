@@ -22,6 +22,8 @@ FROM eclipse-temurin:17-jre-alpine
 # Set working directory
 WORKDIR /app
 
+# Copy the built war file from the build stage
+COPY --from=build /app/target/*.jar app.jar
 # Copy the built jar file from the build stage
 COPY --from=build /app/target/thymeleaf-0.0.1-SNAPSHOT.jar app.jar
 
