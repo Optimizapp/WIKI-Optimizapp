@@ -81,6 +81,20 @@ public static class TechItem {
         return "about";
     }
 
+    @GetMapping("/issues")
+    public String issues(Model model) {
+        model.addAttribute("title", "Issues - Wiki Javeriana");
+        model.addAttribute("pageTitle", "Issues");
+        return "issues";
+    }
+
+    @GetMapping("/actas")
+    public String actas(Model model) {
+        model.addAttribute("title", "Actas de Reunión - Wiki Javeriana");
+        model.addAttribute("pageTitle", "Actas de Reunión");
+        return "actas";
+    }
+
     @GetMapping("/topics")
     public String topics(Model model) {
         model.addAttribute("title", "Temas - Wiki Javeriana");

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actas de Reunión</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Header Fragment -->
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h2>Actas de Reunión</h2>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">Inicio</a> > Actas de Reunión
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>Acta de Reunión</h3>
+                <p><strong>Fecha:</strong> 24 de febrero</p>
+                <p><strong>Hora:</strong> 4:00 p. m.</p>
+                <p><strong>Asistencia:</strong> 4 integrantes presentes</p>
+                <p><strong>Ausentes:</strong> Pipe y Camila</p>
+
+                <h4>Temas tratados</h4>
+                <ul>
+                    <li>Se revisó el issue: “Elaborar diagrama de relación entre entidades y controladores”.</li>
+                    <li>La asignación de este issue se realizó por el grupo de WhatsApp.</li>
+                    <li>También se habló de otro issue relacionado con la implementación.</li>
+                </ul>
+
+                <h4>Acuerdos</h4>
+                <ul>
+                    <li>En el grupo de WhatsApp se acordó que Camila responderá (tomará/atenderá) este issue: “Elaborar diagrama de relación entre entidades y controladores”.</li>
+                    <li>Diego implementará la parte correspondiente con base en lo que realizará Camila.</li>
+                </ul>
+
+                <h4>Observaciones</h4>
+                <ul>
+                    <li>Debido a la ausencia de Camila en la reunión, la coordinación de su participación se gestionó por WhatsApp.</li>
+                </ul>
+
+                <h3>Acta de Reunión</h3>
+                <p><strong>Fecha:</strong> 10 de marzo</p>
+                <p><strong>Contexto:</strong> Seguimiento al avance del proyecto backend.</p>
+                <p>Durante la clase del 5 de marzo se asignó un issue del repositorio para su desarrollo. Sin embargo, no se recibió respuesta ni avance por ningún miembro del equipo. Debido a esto, Diego asumió la implementación del issue, incluyendo validaciones y preparación de pruebas unitarias, presentadas en la clase del 10 de marzo.</p>
+                <p>Adicionalmente, Camila tenía asignado otro issue, el cual fue resuelto el día lunes y validado durante la sesión de hoy, confirmando su correcto funcionamiento.</p>
+                <p>Según el historial de commits, se evidencian avances en la implementación del backend: configuración de arquitectura base, integración con la base de datos, desarrollo de servicio y controlador de Company, así como validaciones y pruebas.</p>
+                <p>Finalmente, durante la reunión del 10 de marzo se acordó:</p>
+                <ul>
+                    <li>Se asignan tres nuevos issues del repositorio para continuar el desarrollo.</li>
+                    <li>Estos issues deben tener respuesta o avance antes del viernes de la misma semana.</li>
+                    <li>Un integrante del equipo deberá completar y actualizar la información del proyecto en la Wiki del repositorio.</li>
+                </ul>
+                <p><strong>Fecha de elaboración:</strong> 10 de marzo</p>
+
+                <h3>Acta de Reunión</h3>
+                <p><strong>Fecha:</strong> 12 de marzo</p>
+                <p><strong>Contexto:</strong> Seguimiento al avance del proyecto backend.</p>
+                <p>El día de hoy Camila pagó sus deudas con el grupo y trajo gomitas para todos. Además, Daniel Galvis no vino el día de hoy. Se conversaron los avances de los issues asignados, donde Nicolás hace un pull request para la revisión y aprobación del issue #2.</p>
+                <p>Se implementaron DTOs (CompanyRequestDto y CompanyResponseDto) para manejar solicitudes y respuestas de la API relacionadas con la entidad Company. Esto permitió desacoplar el modelo de persistencia del contrato HTTP, evitando exponer directamente la entidad JPA y mejorando la seguridad y mantenibilidad del sistema.</p>
+                <p><strong>Proyecto:</strong> Organizapp – Backend</p>
+                <p><strong>Participantes:</strong></p>
+                <ul>
+                    <li>Jesús Nicolás #2</li>
+                    <li>Daniel Galvis - Documentación</li>
+                    <li>Andrés #1</li>
+                    <li>Mauricio #3</li>
+                </ul>
+                <p><strong>Fecha de elaboración:</strong> 12 de marzo</p>
+
+                <h3>Acta de Reunión</h3>
+                <p><strong>Fecha:</strong> 17 de marzo</p>
+                <p><strong>Contexto:</strong> Seguimiento al avance del proyecto backend.</p>
+                <p>Camila hizo el issue número siete, aunque falta integrarlo a dev; Camila lo integrará más tarde. Diego hizo el issue número seis.</p>
+                <p>Daniel Galvis y Mauricio no asistieron a la clase del día. El grupo enfocará el siguiente paso en la preparación del despliegue de la aplicación web.</p>
+                <p>La división de issues quedó así: Andrés issue #8, Nicolás issue #10, Daniel issue #9 y Mauricio documentación.</p>
+                <p>Se acordó entrega de issues hasta el 19 de marzo y documentación hasta el 21 de marzo.</p>
+
+                <h4>Relación con las actas</h4>
+                <p>El avance de los issues fue discutido y validado en reuniones del equipo. Se asignaron tareas, se revisaron avances y se establecieron fechas de entrega, lo que permitió una correcta organización del proyecto.</p>
+            </div>
+        </div>
+    </main>
+
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+
+</body>
+</html>

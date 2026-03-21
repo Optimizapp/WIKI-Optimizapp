@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issues</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- Header Fragment -->
+    <th:block th:replace="fragments/header :: header"></th:block>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h2>Issues</h2>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">Inicio</a> > Issues
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h3>📋 Estado del Trabajo (Issues)</h3>
+                <p>El desarrollo del backend del proyecto Organizapp se gestionó mediante el uso de issues en GitHub, permitiendo organizar el trabajo, asignar responsabilidades y hacer seguimiento al avance del proyecto.</p>
+                <p>A través de reuniones periódicas, el equipo definió tareas específicas, responsables y fechas de entrega, asegurando el cumplimiento de los objetivos.</p>
+
+                <h4>Metodología de trabajo</h4>
+                <ul>
+                    <li>GitHub Issues para dividir el trabajo</li>
+                    <li>Pull Requests para revisión de código</li>
+                    <li>Actas de reunión para seguimiento del avance</li>
+                    <li>Trabajo colaborativo por roles</li>
+                </ul>
+
+                <h4>Implementación de Entidades y Repositories</h4>
+                <p>El proyecto se centró en la implementación de entidades del dominio y sus correspondientes repositories para acceso a datos.</p>
+
+                <h4>Lista de Issues</h4>
+                <table class="issues-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Responsable</th>
+                            <th>Estado</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#29</td>
+                            <td>Crear DTOs para User y Process</td>
+                            <td>Daniel</td>
+                            <td>Completado</td>
+                            <td>Creación de DTOs para desacoplar la API de las entidades. Mejora en seguridad y mantenibilidad.</td>
+                        </tr>
+                        <tr>
+                            <td>#26</td>
+                            <td>Agregar pruebas unitarias para User y Process</td>
+                            <td>Diego</td>
+                            <td>Completado</td>
+                            <td>Extensión de pruebas unitarias a nuevas entidades. Mayor cobertura del sistema.</td>
+                        </tr>
+                        <tr>
+                            <td>#25</td>
+                            <td>Crear servicios para User y Process</td>
+                            <td>Diego</td>
+                            <td>Completado</td>
+                            <td>Implementación de servicios para User y Process siguiendo la arquitectura por capas. Lógica de negocio correctamente estructurada.</td>
+                        </tr>
+                        <tr>
+                            <td>#18</td>
+                            <td>Issue 8 - Crear repositorios faltantes</td>
+                            <td>Andrés</td>
+                            <td>Completado</td>
+                            <td>Creación de repositorios faltantes para completar la arquitectura. Todas las entidades cuentan con persistencia.</td>
+                        </tr>
+                        <tr>
+                            <td>#17</td>
+                            <td>Issue 10 - Crear controladores REST</td>
+                            <td>Nicolás</td>
+                            <td>Completado</td>
+                            <td>Implementación de controladores REST adicionales. Exposición de nuevas funcionalidades.</td>
+                        </tr>
+                        <tr>
+                            <td>#15</td>
+                            <td>Crear entidad Process</td>
+                            <td>Diego</td>
+                            <td>Completado</td>
+                            <td>Trabajo sobre la entidad Process y su integración al modelo del backend.</td>
+                        </tr>
+                        <tr>
+                            <td>#14</td>
+                            <td>Crear entidad User</td>
+                            <td>Diego</td>
+                            <td>Completado</td>
+                            <td>Creación de la entidad User.</td>
+                        </tr>
+                        <tr>
+                            <td>#12</td>
+                            <td>Perfiles y Externalización de credenciales</td>
+                            <td>Andrés</td>
+                            <td>Completado</td>
+                            <td>Configuración de perfiles y manejo seguro de credenciales. Mejora en seguridad y despliegue.</td>
+                        </tr>
+                        <tr>
+                            <td>#5</td>
+                            <td>Pruebas unitarias</td>
+                            <td>Diego</td>
+                            <td>Completado</td>
+                            <td>Implementación de pruebas unitarias para la entidad Company. 33 pruebas ejecutadas correctamente.</td>
+                        </tr>
+                        <tr>
+                            <td>#4</td>
+                            <td>Implementar CompanyService + CompanyController</td>
+                            <td>Camila</td>
+                            <td>Completado</td>
+                            <td>Implementación de la lógica de negocio y exposición de endpoints REST. Endpoints funcionales probados en Postman.</td>
+                        </tr>
+                        <tr>
+                            <td>#3</td>
+                            <td>Crear CompanyRepository y consultas básicas</td>
+                            <td>Camila</td>
+                            <td>Completado</td>
+                            <td>Implementación de la capa de persistencia para la entidad Company. Repositorio funcional detectado por Spring.</td>
+                        </tr>
+                        <tr>
+                            <td>#1</td>
+                            <td>Setup JPA + conexión a PostgreSQL remoto</td>
+                            <td>Diego</td>
+                            <td>Completado</td>
+                            <td>Configuración del backend para usar Spring Data JPA con PostgreSQL remota. Conexión exitosa y creación automática del esquema.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Relación con las actas</h4>
+                <p>El avance de los issues fue discutido y validado en reuniones del equipo. Se asignaron tareas, se revisaron avances y se establecieron fechas de entrega, lo que permitió una correcta organización del proyecto.</p>
+            </div>
+                        <tr>
+                            <td>#1</td>
+                            <td>Setup JPA + conexión a PostgreSQL remoto (DBaaS)</td>
+                            <td></td>
+                            <td>about 2 hours ago</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h4>Relación con las actas</h4>
+                <p>El avance de los issues fue discutido y validado en reuniones del equipo. Se asignaron tareas, se revisaron avances y se establecieron fechas de entrega, lo que permitió una correcta organización del proyecto.</p>
+            </div>
+        </div>
+    </main>
+    <th:block th:replace="fragments/footer :: footer"></th:block>
+</body>
+</html>
