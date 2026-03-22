@@ -10,10 +10,6 @@
     
 <th:block th:replace="fragments/header :: header"></th:block>
 
-<div class="mt-4">
-    <a th:href="@{/structure}" class="btn btn-primary">Ver estructura y arquitectura del proyecto</a>
-</div>
-
 <main class="main-content">
     <div class="container">
 
@@ -98,6 +94,11 @@
                     <h3>Actas de Reunión</h3>
                     <p>Registro de reuniones y decisiones del equipo.</p>
                     <a th:href="@{/actas}" class="btn">Ir</a>
+                </div>
+                <div class="topic-card">
+                    <h3>Estructura y Arquitectura</h3>
+                    <p>Diagrama y detalles técnicos del proyecto.</p>
+                    <a th:href="@{/structure}" class="btn">Ir</a>
                 </div>
                 
             </div>

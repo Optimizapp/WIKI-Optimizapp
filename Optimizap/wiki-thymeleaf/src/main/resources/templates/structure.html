@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head :: head('Estructura del Proyecto')"></head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructura del Proyecto - Wiki Javeriana</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
 <body>
+    <!-- Header Fragment -->
+    <th:block th:replace="fragments/header :: header"></th:block>
 
-<div th:replace="fragments/navbar :: navbar"></div>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h2>Estructura y Arquitectura del Proyecto</h2>
+                <div class="breadcrumb">
+                    <a th:href="@{/}">Inicio</a> > Estructura y Arquitectura
+                </div>
+            </div>
 
-<main class="container mt-4">
-    <section>
-        <h1 class="mb-4">Estructura y Arquitectura del Proyecto</h1>
+            <div class="content-section">
 
         <p>
             El proyecto <strong>Optimizapp</strong> está organizado siguiendo una arquitectura por capas,
@@ -81,7 +94,7 @@
         </p>
 
         <div class="text-center my-4">
-            <img src="/images/diagrama-relacion.jpg" alt="Diagrama de relación del proyecto" class="img-fluid rounded shadow">
+            <img src="/images/diagrama-relacion.jpg" alt="Diagrama de relación del proyecto" class="img-fluid rounded shadow" style="max-width: 80%; height: auto;">
         </div>
 
         <h2 class="mt-4">Conclusión</h2>
@@ -91,10 +104,11 @@
             como Spring Boot, JPA, PostgreSQL y Thymeleaf fortalecen la base técnica del sistema y facilitan su evolución
             durante las siguientes entregas del proyecto.
         </p>
-    </section>
-</main>
+            </div>
+        </div>
+    </main>
 
-<div th:replace="fragments/footer :: footer"></div>
+    <th:block th:replace="fragments/footer :: footer"></th:block>
 
 </body>
 </html>
