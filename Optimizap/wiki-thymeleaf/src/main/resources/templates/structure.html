@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Estructura del Proyecto')"></head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<main class="container mt-4">
+    <section>
+        <h1 class="mb-4">Estructura y Arquitectura del Proyecto</h1>
+
+        <p>
+            El proyecto <strong>Optimizapp</strong> está organizado siguiendo una arquitectura por capas,
+            con el objetivo de mantener una separación clara entre la presentación, la lógica de negocio,
+            el acceso a datos y la persistencia. Esta estructura facilita el mantenimiento del sistema,
+            la escalabilidad y el trabajo colaborativo entre los integrantes del equipo.
+        </p>
+
+        <h2 class="mt-4">Arquitectura general</h2>
+        <p>
+            La solución está construida sobre <strong>Spring Boot</strong> y aplica el patrón
+            <strong>MVC (Modelo - Vista - Controlador)</strong>. A nivel general, la arquitectura se divide en:
+        </p>
+
+        <ul>
+            <li><strong>Capa de presentación:</strong> compuesta por controladores y vistas, encargadas de recibir las solicitudes del usuario y mostrar la información.</li>
+            <li><strong>Capa de servicios:</strong> contiene la lógica de negocio del sistema y coordina las operaciones principales.</li>
+            <li><strong>Capa de acceso a datos:</strong> implementada mediante repositorios JPA para interactuar con la base de datos.</li>
+            <li><strong>Capa de persistencia:</strong> soportada en una base de datos PostgreSQL donde se almacena la información del sistema.</li>
+        </ul>
+
+        <h2 class="mt-4">Estructura del backend</h2>
+        <p>
+            En el backend, el proyecto está organizado en paquetes que responden a las responsabilidades
+            principales del sistema. Esta distribución permite que cada componente tenga una función clara
+            dentro de la aplicación.
+        </p>
+
+        <ul>
+            <li><strong>entities:</strong> contiene las clases del dominio, como usuarios, empresas y procesos.</li>
+            <li><strong>repositories:</strong> agrupa los repositorios JPA encargados de la comunicación con la base de datos.</li>
+            <li><strong>services:</strong> incluye la lógica de negocio y las reglas del sistema.</li>
+            <li><strong>controllers:</strong> expone los endpoints o controla la navegación entre vistas.</li>
+            <li><strong>dtos:</strong> define los objetos de transferencia de datos utilizados para desacoplar la capa interna de la externa.</li>
+            <li><strong>exceptions:</strong> centraliza el manejo de errores y excepciones del sistema.</li>
+            <li><strong>config:</strong> reúne configuraciones generales del proyecto, como beans, seguridad o mapeadores.</li>
+        </ul>
+
+        <h2 class="mt-4">Relación entre componentes</h2>
+        <p>
+            El flujo general del sistema funciona de la siguiente manera: el usuario interactúa con la interfaz,
+            el controlador recibe la solicitud, delega la operación al servicio correspondiente, el servicio consulta
+            o actualiza la información mediante los repositorios y finalmente se devuelve una respuesta o vista al usuario.
+            Este diseño mejora la organización del código y hace más sencilla la incorporación de nuevas funcionalidades.
+        </p>
+
+        <h2 class="mt-4">Tecnologías principales</h2>
+        <ul>
+            <li><strong>Java y Spring Boot:</strong> base del desarrollo backend.</li>
+            <li><strong>Spring Data JPA:</strong> manejo de persistencia y repositorios.</li>
+            <li><strong>PostgreSQL:</strong> sistema gestor de base de datos.</li>
+            <li><strong>Thymeleaf:</strong> motor de plantillas para la construcción de las vistas web.</li>
+            <li><strong>Lombok:</strong> reducción de código repetitivo en entidades y clases de soporte.</li>
+            <li><strong>ModelMapper:</strong> conversión entre entidades y DTOs.</li>
+            <li><strong>Docker y Kubernetes:</strong> apoyo al despliegue y ejecución del sistema en contenedores.</li>
+            <li><strong>GitHub:</strong> control de versiones y trabajo colaborativo.</li>
+        </ul>
+
+        <h2 class="mt-4">Aislamiento por empresa</h2>
+        <p>
+            Uno de los principios del proyecto es el enfoque <strong>multiempresa</strong>. Esto significa que cada empresa
+            administra sus usuarios y sus procesos de manera aislada, evitando que la información de una organización
+            interfiera con la de otra. De esta manera, el sistema mantiene independencia lógica entre compañías y favorece
+            una administración segura y ordenada de los procesos empresariales.
+        </p>
+
+        <h2 class="mt-4">Diagrama de relación</h2>
+        <p>
+            A continuación se presenta el diagrama de relación del proyecto, el cual resume la organización de las entidades
+            principales y sus asociaciones dentro del sistema:
+        </p>
+
+        <div class="text-center my-4">
+            <img src="/images/diagrama-relacion.jpg" alt="Diagrama de relación del proyecto" class="img-fluid rounded shadow">
+        </div>
+
+        <h2 class="mt-4">Conclusión</h2>
+        <p>
+            En conjunto, la arquitectura del proyecto permite una solución ordenada, modular y mantenible.
+            La separación por capas, el uso de buenas prácticas de desarrollo y la incorporación de tecnologías
+            como Spring Boot, JPA, PostgreSQL y Thymeleaf fortalecen la base técnica del sistema y facilitan su evolución
+            durante las siguientes entregas del proyecto.
+        </p>
+    </section>
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+</body>
+</html>

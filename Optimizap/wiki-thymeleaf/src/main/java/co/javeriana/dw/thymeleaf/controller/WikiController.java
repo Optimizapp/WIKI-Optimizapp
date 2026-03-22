@@ -95,6 +95,15 @@ public static class TechItem {
         return "actas";
     }
 
+@GetMapping("/structure")
+public String structure(Model model) {
+    model.addAttribute("title", "Estructura del Proyecto - Wiki Javeriana");
+    model.addAttribute("pageTitle", "Estructura y Arquitectura del Proyecto");
+    return "structure";
+}
+
+
+
     @GetMapping("/topics")
     public String topics(Model model) {
         model.addAttribute("title", "Temas - Wiki Javeriana");
